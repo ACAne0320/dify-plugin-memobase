@@ -1,0 +1,30 @@
+identity:
+  name: add_user
+  author: acane0320
+  label:
+    en_US: Add a User
+    zh_Hans: 添加用户
+    pt_BR: Adicionar Usuário
+description:
+  human:
+    en_US: Add a new user in Memobase
+    zh_Hans: 在 Memobase 中添加新用户
+    pt_BR: Adicionar um novo usuário no Memobase
+  llm: Use this tool to add a new user in Memobase. You need to provide the name and optionally metadata for the user.
+parameters:
+  - name: metadata
+    type: string
+    required: false
+    label:
+      en_US: Metadata
+      zh_Hans: 元数据
+      pt_BR: Metadados
+    human_description:
+      en_US: Optional metadata for the user (JSON string)
+      zh_Hans: 可选的用户元数据（JSON 字符串）
+      pt_BR: Metadados opcionais para o usuário (string JSON)
+    llm_description: Optional metadata for the user in JSON string format.
+    form: llm
+extra:
+  python:
+    source: tools/user/add_user.py
