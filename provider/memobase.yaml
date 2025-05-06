@@ -14,7 +14,7 @@ identity:
   icon: memobase.svg
 credentials_for_provider:
   memobase_url:
-    type: secret-input
+    type: text-input
     required: true
     label:
       en_US: Memobase URL

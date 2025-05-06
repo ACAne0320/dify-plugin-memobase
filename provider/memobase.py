@@ -18,7 +18,7 @@ class MemobaseProvider(ToolProvider):
                 api_key=MEMOBASE_API_KEY,
             )
             
-            assert client.ping()
+            client.get_config()
 
         except Exception as e:
-            raise ToolProviderCredentialValidationError(str(e))
+            raise ToolProviderCredentialValidationError('Memobase credentials are invalid. Please check your Memobase URL and API key.') from e
