@@ -4,7 +4,7 @@
 
 **Author:** acane0320
 
-**Version:** 0.0.1
+**Version:** 0.0.2
 
 **Type:** tool
 
@@ -29,11 +29,20 @@ To use this plugin, you need to provide the following credentials when adding it
 2.  **Memobase API Key:** **Your** API key for authenticating with **your** Memobase instance.
 
 You can obtain these from your [Memobase dashboard](https://www.memobase.io/en/dashboard) or configuration.
+![Memobase dashboard](/_assets/memobase_dashboard.png)
 ### Usage
 
-Once configured with the details of your Memobase instance, the Memobase tools will be available within the Dify orchestration interface. You can add these tools to your workflows to:
+Once configured with the details of your Memobase instance, the Memobase tools will be available within the Dify orchestration interface.
+
+You can add these tools to your workflows to:
 
 *   Store conversation history for long-term memory in your Memobase.
 *   Retrieve user profiles or context from your Memobase to personalize responses.
 *   Search past user events or interactions stored in your Memobase.
 *   Manage user information within your Memobase directly from Dify.
+
+For specific instructions on how to use the tool, you can refer to the [Memobase API Reference](https://docs.memobase.io/api-reference/overview).
+
+### Workflow
+Here's a minimal workflow based on the memobase plugin to implement the memory functionality.
+![Memobase workflow](/_assets/workflow.png)

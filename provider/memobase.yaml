@@ -7,10 +7,10 @@ identity:
     ja_Jp: memobase
     pt_BR: memobase
   description:
-    en_US: Memobase is a fast and scalable, long-term user memory backend for your AI.
-    zh_Hans: Memobase 是一个快速、可扩展的AI长期用户记忆后端。
-    ja_Jp: Memobaseは、AIのための高速でスケーラブルな長期ユーザーメモリバックエンドです。
-    pt_BR: Memobase é um backend de memória de usuário de longo prazo rápido e escalável para sua IA.
+    en_US: Memobase is a user profile-based memory system designed to bring long-term user memory to your Generative AI (GenAI) applications.
+    zh_Hans: Memobase 是一个用户档案基础的记忆系统，旨在为您的生成式AI（GenAI）应用程序带来长期用户记忆。
+    ja_Jp: Memobaseは、ユーザープロファイルベースのメモリシステムであり、生成AI（GenAI）アプリケーションに長期的なユーザーメモリを提供することを目的としています。
+    pt_BR: Memobase é um sistema de memória baseado em perfil de usuário projetado para trazer memória de usuário de longo prazo para suas aplicações de IA generativa (GenAI).
   icon: memobase.svg
 credentials_for_provider:
   memobase_url:
@@ -31,7 +31,6 @@ credentials_for_provider:
       zh_Hans: 从 Memobase 获取您的 Memobase URL
       ja_Jp: MemobaseのURLをMemobaseから取得してください
       pt_BR: Obtenha sua URL do Memobase no Memobase
-    url: https://www.memobase.io/en/dashboard
   memobase_api_key:
     type: secret-input
     required: true
@@ -52,6 +51,7 @@ credentials_for_provider:
       pt_BR: Obtenha sua chave de API do Memobase no Memobase
     url: https://www.memobase.io/en/dashboard
 tools:
+  - tools/user/get_or_create_user.yaml
   - tools/user/add_user.yaml
   - tools/user/get_user.yaml
   - tools/user/update_user.yaml
