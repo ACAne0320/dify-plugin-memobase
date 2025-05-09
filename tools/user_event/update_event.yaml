@@ -20,6 +20,7 @@ parameters:
     label:
       en_US: User ID
       zh_Hans: 用户 ID
+      ja_Jp: ユーザー ID
       pt_BR: ID do Usuário
     human_description:
       en_US: The ID of the user whose event will be updated
