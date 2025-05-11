@@ -1,0 +1,500 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Memobase
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: acane0320/memobase:0.0.2@b609d1b1e4e454835a291209bed62bc405240c9072d2af3d613480e14444fcd1
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.7@11ec0b1909200f62b6ebf2cec1da981a9071d11c1ee0e2ef332ce89bcffa2544
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-answer-target
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1746808904834-source-llm-target
+      source: '1746808904834'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1746808830582-source-1746978593917-target
+      source: '1746808830582'
+      sourceHandle: source
+      target: '1746978593917'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1746978593917-source-1746978598599-target
+      source: '1746978593917'
+      sourceHandle: source
+      target: '1746978598599'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: template-transform
+      id: 1746978598599-source-1746808904834-target
+      source: '1746978598599'
+      sourceHandle: source
+      target: '1746808904834'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: llm-source-1746978611565-target
+      source: llm
+      sourceHandle: source
+      target: '1746978611565'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1746808830582'
+      position:
+        x: 30
+        y: 252.5
+      positionAbsolute:
+        x: 30
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 585d2c14-7bc7-45cb-b213-352c43c69c89
+          role: system
+          text: '{{#1746808904834.output#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm
+      position:
+        x: 1246
+        y: 252.5
+      positionAbsolute:
+        x: 1246
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1550
+        y: 252.5
+      positionAbsolute:
+        x: 1550
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1[0].context }}'
+        title: Template
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1746978598599'
+          - json
+          variable: arg1
+      height: 54
+      id: '1746808904834'
+      position:
+        x: 942
+        y: 252.5
+      positionAbsolute:
+        x: 942
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Unique identifier for the user
+            ja_JP: Unique identifier for the user
+            pt_BR: Identificador exclusivo para o usuário
+            zh_Hans: 用户的唯一标识符
+          label:
+            en_US: User ID
+            ja_JP: User ID
+            pt_BR: ID do Usuário
+            zh_Hans: 用户 ID
+          llm_description: Unique identifier for the user.
+          max: null
+          min: null
+          name: user_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          user_id: ''
+        provider_id: acane0320/memobase/memobase
+        provider_name: acane0320/memobase/memobase
+        provider_type: builtin
+        selected: false
+        title: Get or Create a User
+        tool_configurations: {}
+        tool_description: Get or create a user in Memobase
+        tool_label: Get or Create a User
+        tool_name: get_or_create_user
+        tool_parameters:
+          user_id:
+            type: mixed
+            value: '{{#sys.user_id#}}'
+        type: tool
+      height: 54
+      id: '1746978593917'
+      position:
+        x: 334
+        y: 252.5
+      positionAbsolute:
+        x: 334
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The ID of the user to retrieve context for
+            ja_JP: The ID of the user to retrieve context for
+            pt_BR: O ID do usuário para recuperar o contexto
+            zh_Hans: 要检索上下文的用户ID
+          label:
+            en_US: User ID
+            ja_JP: User ID
+            pt_BR: ID do Usuário
+            zh_Hans: 用户ID
+          llm_description: The ID of the user to retrieve context for.
+          max: null
+          min: null
+          name: user_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 1000
+          form: llm
+          human_description:
+            en_US: 'The maximum number of tokens to return (default: 1000)'
+            ja_JP: 'The maximum number of tokens to return (default: 1000)'
+            pt_BR: 'O número máximo de tokens a serem retornados (padrão: 1000)'
+            zh_Hans: 要返回的最大Token大小（默认值：1000）
+          label:
+            en_US: Max token size of returned Context
+            ja_JP: Max token size of returned Context
+            pt_BR: Tamanho máximo do token do contexto retornado
+            zh_Hans: 返回上下文的最大Token大小
+          llm_description: The maximum number of tokens to return in the context.
+          max: null
+          min: null
+          name: max_token_size
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          max_token_size: ''
+          user_id: ''
+        provider_id: acane0320/memobase/memobase
+        provider_name: acane0320/memobase/memobase
+        provider_type: builtin
+        selected: false
+        title: Get User Context
+        tool_configurations: {}
+        tool_description: Get personalized context for a user from Memobase
+        tool_label: Get User Context
+        tool_name: get_user_context
+        tool_parameters:
+          user_id:
+            type: mixed
+            value: '{{#sys.user_id#}}'
+        type: tool
+      height: 54
+      id: '1746978598599'
+      position:
+        x: 638
+        y: 252.5
+      positionAbsolute:
+        x: 638
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The ID of the user to insert data for
+            ja_JP: The ID of the user to insert data for
+            pt_BR: O ID do usuário para inserir dados
+            zh_Hans: 要为其插入数据的用户 ID
+          label:
+            en_US: User ID
+            ja_JP: User ID
+            pt_BR: ID do Usuário
+            zh_Hans: 用户 ID
+          llm_description: The ID of the user to insert data for.
+          max: null
+          min: null
+          name: user_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The message from the user in the conversation
+            ja_JP: The message from the user in the conversation
+            pt_BR: A mensagem do usuário na conversa
+            zh_Hans: 对话中用户的消息
+          label:
+            en_US: User Message
+            ja_JP: User Message
+            pt_BR: Mensagem do Usuário
+            zh_Hans: 用户消息
+          llm_description: The message content from the user in the conversation.
+          max: null
+          min: null
+          name: user_message
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The message from the assistant in the conversation
+            ja_JP: The message from the assistant in the conversation
+            pt_BR: A mensagem do assistente na conversa
+            zh_Hans: 对话中助手的消息
+          label:
+            en_US: Assistant Message
+            ja_JP: Assistant Message
+            pt_BR: Mensagem do Assistente
+            zh_Hans: 助手消息
+          llm_description: The message content from the assistant in the conversation.
+          max: null
+          min: null
+          name: assistant_message
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          assistant_message: ''
+          user_id: ''
+          user_message: ''
+        provider_id: acane0320/memobase/memobase
+        provider_name: acane0320/memobase/memobase
+        provider_type: builtin
+        selected: false
+        title: Insert Data
+        tool_configurations: {}
+        tool_description: Insert conversation data for a user in Memobase
+        tool_label: Insert Data
+        tool_name: insert_data
+        tool_parameters:
+          assistant_message:
+            type: mixed
+            value: '{{#llm.text#}}'
+          user_id:
+            type: mixed
+            value: '{{#sys.user_id#}}'
+          user_message:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 54
+      id: '1746978611565'
+      position:
+        x: 1550
+        y: 453.95538222013056
+      positionAbsolute:
+        x: 1550
+        y: 453.95538222013056
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 85.48695521752268
+      y: 292.2678949989333
+      zoom: 0.8040888484979245
