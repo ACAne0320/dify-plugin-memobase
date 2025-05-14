@@ -46,3 +46,5 @@ For specific instructions on how to use the tool, you can refer to the [Memobase
 ### Workflow
 Here's a minimal workflow based on the memobase plugin to implement the memory functionality.
 ![Memobase workflow](/_assets/workflow.png)
+
+You can find that workflow DSL file [here](/_assets/memobase.yml).
